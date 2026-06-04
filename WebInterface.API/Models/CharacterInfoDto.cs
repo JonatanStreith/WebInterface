@@ -2,7 +2,7 @@
 
 namespace WebInterface.API.Models
 {
-    public class CharacterCreationDto
+    public class CharacterInfoDto
     {
         [Required(ErrorMessage = "No nameless characters")]
         [MaxLength(50)]

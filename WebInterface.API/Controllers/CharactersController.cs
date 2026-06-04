@@ -36,7 +36,7 @@ namespace WebInterface.API.Controllers
         }
 
         [HttpPost(Name = "AddCharacter")]
-        public ActionResult<CharacterDto> AddCharacter(int AnimeId, CharacterCreationDto character)
+        public ActionResult<CharacterDto> AddCharacter(int AnimeId, CharacterInfoDto character)
         {
             var animeFound = InfoStore.Active.AnimeList.FirstOrDefault(anime => anime.Id == AnimeId);
 

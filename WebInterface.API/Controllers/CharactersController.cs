@@ -35,7 +35,7 @@ namespace WebInterface.API.Controllers
             return Ok(characterFound);
         }
 
-        [HttpPost]
+        [HttpPost(Name = "AddCharacter")]
         public ActionResult<CharacterDto> AddCharacter(int AnimeId, CharacterCreationDto character)
         {
             var animeFound = InfoStore.Active.AnimeList.FirstOrDefault(anime => anime.Id == AnimeId);
@@ -53,7 +53,9 @@ namespace WebInterface.API.Controllers
 
             animeFound.Characters.Add(completeChara);
 
-            return Ok(completeChara);
+            return CreatedAtRoute("AddCharacter", new { AnimeId, completeChara.Id }, completeChara);
+
+            //return Ok(completeChara);
 
         }
     }

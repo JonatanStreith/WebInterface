@@ -58,5 +58,23 @@ namespace WebInterface.API.Controllers
             //return Ok(completeChara);
 
         }
+
+        [HttpPut("{characterId}")]
+        public ActionResult UpdateCharacter(int AnimeId, int characterId, CharacterInfoDto character) 
+        {
+
+            var animeFound = InfoStore.Active.AnimeList.FirstOrDefault(anime => anime.Id == AnimeId);
+
+            if (animeFound == null) return NotFound();
+
+            var characterFound = animeFound.Characters.FirstOrDefault(chara => chara.Id == characterId);
+
+            if (characterFound == null) return NotFound();
+
+            characterFound.Name = character.Name;
+            characterFound.Description = character.Description;
+
+            return NoContent();
+        }
     }
 }
